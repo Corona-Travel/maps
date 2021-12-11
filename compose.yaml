@@ -58,21 +58,34 @@ services:
     ports:
       - 12344:1234
 
-  maps:
+  map_2D:
     build:
       dockerfile: ./Dockerfile
       args:
-        SRC_PATH: ./src/maps
-        APP_PATH: ./maps
-        ASGI_APP: maps.app:app
+        SRC_PATH: ./src/map_2D
+        APP_PATH: ./map_2D
+        ASGI_APP: map_2D.app:app
     environment:
       LOG_LEVEL: DEBUG
-      FACTS_URL: http://facts/
-      MEDIA_URL: http://media/
       PLACES_URL: http://places/
-      QUIZZES_URL: http://quizzes/
     networks:
       - backend
     ports:
       - 12345:1234
 
+  map_3D:
+    build:
+      dockerfile: ./Dockerfile
+      args:
+        SRC_PATH: ./src/map_3D
+        APP_PATH: ./map_3D
+        ASGI_APP: map_3D.app:app
+    environment:
+      LOG_LEVEL: DEBUG
+      FACTS_URL: http://facts/
+      MEDIA_URL: http://media/
+      QUIZZES_URL: http://quizzes/
+    networks:
+      - backend
+    ports:
+      - 12346:1234
