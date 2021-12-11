@@ -19,7 +19,7 @@ services:
       - 27017:27017
 
   facts:
-    image: ghcr.io/corona-travel/ctf:latest
+    image: ghcr.io/corona-travel/facts:latest
     environment:
       MONGO_URL: mongodb://mongo/corona_travel
       LOG_LEVEL: DEBUG
@@ -29,7 +29,7 @@ services:
       - 12341:1234
 
   media:
-    image: ghcr.io/corona-travel/ctf:latest
+    image: ghcr.io/corona-travel/media:latest
     environment:
       MONGO_URL: mongodb://mongo/corona_travel
       LOG_LEVEL: DEBUG
@@ -39,7 +39,7 @@ services:
       - 12342:1234
 
   places:
-    image: ghcr.io/corona-travel/ctf:latest
+    image: ghcr.io/corona-travel/places:latest
     environment:
       MONGO_URL: mongodb://mongo/corona_travel
       LOG_LEVEL: DEBUG
@@ -49,7 +49,7 @@ services:
       - 12343:1234
 
   quizzes:
-    image: ghcr.io/corona-travel/ctf:latest
+    image: ghcr.io/corona-travel/quizzes:latest
     environment:
       MONGO_URL: mongodb://mongo/corona_travel
       LOG_LEVEL: DEBUG
