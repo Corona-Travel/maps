@@ -6,9 +6,8 @@ from pydantic import BaseSettings
 
 class Settings(BaseSettings):
     facts_url: Any = "http://localhost:1234"
-    quizes_url: Any = "http://localhost:1234"
-    excursions_url: Any = "http://localhost:1234"
     media_url: Any = "http://localhost:1234"
+    quizzes_url: Any = "http://localhost:1234"
 
     class Config:
         env_file = ".env"

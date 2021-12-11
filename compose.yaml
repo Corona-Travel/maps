@@ -1,0 +1,78 @@
+networks:
+  frontend:
+  backend:
+
+services:
+  mongo:
+    image: mongo:5
+    networks:
+      - backend
+    volumes:
+      - "./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js"
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/corona_travel --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+    ports:
+      - 27017:27017
+
+  facts:
+    image: ghcr.io/corona-travel/ctf:latest
+    environment:
+      MONGO_URL: mongodb://mongo/corona_travel
+      LOG_LEVEL: DEBUG
+    networks:
+      - backend
+    ports:
+      - 12341:1234
+
+  media:
+    image: ghcr.io/corona-travel/ctf:latest
+    environment:
+      MONGO_URL: mongodb://mongo/corona_travel
+      LOG_LEVEL: DEBUG
+    networks:
+      - backend
+    ports:
+      - 12342:1234
+
+  places:
+    image: ghcr.io/corona-travel/ctf:latest
+    environment:
+      MONGO_URL: mongodb://mongo/corona_travel
+      LOG_LEVEL: DEBUG
+    networks:
+      - backend
+    ports:
+      - 12343:1234
+
+  quizzes:
+    image: ghcr.io/corona-travel/ctf:latest
+    environment:
+      MONGO_URL: mongodb://mongo/corona_travel
+      LOG_LEVEL: DEBUG
+    networks:
+      - backend
+    ports:
+      - 12344:1234
+
+  maps:
+    build:
+      dockerfile: ./Dockerfile
+      args:
+        SRC_PATH: ./src/maps
+        APP_PATH: ./maps
+        ASGI_APP: maps.app:app
+    environment:
+      LOG_LEVEL: DEBUG
+      FACTS_URL: http://facts/
+      MEDIA_URL: http://media/
+      PLACES_URL: http://places/
+      QUIZZES_URL: http://quizzes/
+    networks:
+      - backend
+    ports:
+      - 12345:1234
+

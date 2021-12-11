@@ -1,0 +1,11 @@
+# IDE
+/.idea/
+/.venv/
+/htmlcov/
+/.pytest_cache/
+
+# cache
+/**/__pycache__/
+
+# for local testing only
+/mongo-init.js
