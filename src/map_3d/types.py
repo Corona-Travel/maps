@@ -4,14 +4,9 @@ from typing import List, NamedTuple, Tuple
 from pydantic import BaseModel
 
 
-class Coordinates(NamedTuple):
+class Position(NamedTuple):
     lng: float
     lat: float
-
-
-class Position(BaseModel):
-    type: str
-    coordinates: Coordinates
 
 
 class Marker3DType(str, Enum):
