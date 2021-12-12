@@ -1,5 +1,5 @@
-from typing import List, NamedTuple, Tuple
 from enum import Enum
+from typing import List, NamedTuple, Tuple
 
 from pydantic import BaseModel
 
@@ -7,6 +7,7 @@ from pydantic import BaseModel
 class Coordinates(NamedTuple):
     lng: float
     lat: float
+
 
 class Position(BaseModel):
     type: str

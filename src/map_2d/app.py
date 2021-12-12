@@ -1,13 +1,22 @@
-from fastapi import FastAPI, Depends
 from json import loads
 from logging import getLogger
 
 import httpx
+from fastapi import Depends, FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
-from .types import Marker2D, Markers2D
 from .settings import Settings, get_settings
+from .types import Marker2D, Markers2D
 
 app = FastAPI(openapi_tags=[{"name": "service:map2D"}])
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 logger = getLogger("service:map2D")
 
@@ -21,9 +30,9 @@ async def map2D(settings: Settings = Depends(get_settings)):
         for marker in markers:
             res.append(
                 Marker2D(
-                        name=marker["name"],
-                        place_id=marker["place_id"],
-                        pos=marker["pos"],
+                    name=marker["name"],
+                    place_id=marker["place_id"],
+                    pos=marker["pos"],
                 )
             )
         return res
