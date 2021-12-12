@@ -82,9 +82,9 @@ services:
         ASGI_APP: map_3D.app:app
     environment:
       LOG_LEVEL: DEBUG
-      FACTS_URL: http://facts/
-      MEDIA_URL: http://media/
-      QUIZZES_URL: http://quizzes/
+      FACTS_URL: http://facts:1234/
+      MEDIA_URL: http://media:1234/
+      QUIZZES_URL: http://quizzes:1234/
     networks:
       - backend
     ports:
