@@ -4,7 +4,7 @@ from logging import getLogger
 
 import httpx
 
-from .types import Markers2D
+from .types import Marker2D, Markers2D
 from .settings import Settings, get_settings
 
 app = FastAPI(openapi_tags=[{"name": "service:map2D"}])
@@ -16,6 +16,14 @@ logger = getLogger("service:map2D")
 async def map2D(settings: Settings = Depends(get_settings)):
     logger.debug("searching for 2D markers")
     async with httpx.AsyncClient() as client:
-        res = loads((await client.get(f"{settings.places_url}places")).text)
-        logger.debug(f"response from places service: {res}")
+        markers = loads((await client.get(f"{settings.places_url}places")).text)
+        res = []
+        for marker in markers:
+            res.append(
+                Marker2D(
+                        name=marker["name"],
+                        place_id=marker["place_id"],
+                        pos=marker["pos"],
+                )
+            )
         return res

@@ -1,8 +1,8 @@
-from typing import List
+from typing import List, NamedTuple
 from pydantic import BaseModel
 
 
-class Position(BaseModel):
+class Position(NamedTuple):
     lat: float
     lng: float
 
