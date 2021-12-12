@@ -62,9 +62,9 @@ services:
     build:
       dockerfile: ./Dockerfile
       args:
-        SRC_PATH: ./src/map_2D
-        APP_PATH: ./map_2D
-        ASGI_APP: map_2D.app:app
+        SRC_PATH: ./src/map_2d
+        APP_PATH: ./map_2d
+        ASGI_APP: map_2d.app:app
     environment:
       LOG_LEVEL: DEBUG
       PLACES_URL: http://places:1234/
@@ -77,9 +77,9 @@ services:
     build:
       dockerfile: ./Dockerfile
       args:
-        SRC_PATH: ./src/map_3D
-        APP_PATH: ./map_3D
-        ASGI_APP: map_3D.app:app
+        SRC_PATH: ./src/map_3d
+        APP_PATH: ./map_3d
+        ASGI_APP: map_3d.app:app
     environment:
       LOG_LEVEL: DEBUG
       FACTS_URL: http://facts:1234/
