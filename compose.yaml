@@ -58,7 +58,7 @@ services:
     ports:
       - 12344:1234
 
-  map_2D:
+  map_2d:
     build:
       dockerfile: ./Dockerfile
       args:
@@ -73,7 +73,7 @@ services:
     ports:
       - 12345:1234
 
-  map_3D:
+  map_3d:
     build:
       dockerfile: ./Dockerfile
       args:
