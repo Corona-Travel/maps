@@ -9,7 +9,6 @@ from .settings import Settings, get_settings
 from .types import Marker2D, Markers2D
 
 app = FastAPI(openapi_tags=[{"name": "service:map2D"}])
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
