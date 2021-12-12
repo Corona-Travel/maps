@@ -16,6 +16,6 @@ logger = getLogger("service:map2D")
 async def map2D(settings: Settings = Depends(get_settings)):
     logger.debug("searching for 2D markers")
     async with httpx.AsyncClient() as client:
-        res = loads((await client.get(f"{settings.places_url}/places")).text)
+        res = loads((await client.get(f"{settings.places_url}places")).text)
         logger.debug(f"response from places service: {res}")
         return res

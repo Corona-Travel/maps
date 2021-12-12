@@ -67,7 +67,7 @@ services:
         ASGI_APP: map_2D.app:app
     environment:
       LOG_LEVEL: DEBUG
-      PLACES_URL: http://places/
+      PLACES_URL: http://places:1234/
     networks:
       - backend
     ports:
