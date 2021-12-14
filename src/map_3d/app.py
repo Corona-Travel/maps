@@ -63,6 +63,7 @@ async def map3D(
     type2url: dict[str, str] = {
         "fact": f"{settings.facts_url}facts/near/{lng}/{lat}?max_dist={max_distance}",
         "quiz": f"{settings.quizzes_url}quizzes/near/{lng}/{lat}?max_dist={max_distance}",
+        "media": f"{settings.media_url}media/near/{lng}/{lat}?max_dist={max_distance}",
     }
 
     markers: Markers3D = [
